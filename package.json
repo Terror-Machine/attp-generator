@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "canvas": "^3.1.2",
-    "fs-extra": "^11.3.0",
     "emoji-cache": "^1.0.0",
     "emoji-db": "github:Terror-Machine/emoji-db#master"
   },

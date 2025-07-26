@@ -1,6 +1,6 @@
 const util = require('util');
 const path = require("path");
-const fs = require("fs-extra");
+const fs = require("fs").promises;
 const EmojiDbLib = require("emoji-db");
 const spawn = require('child_process').spawn;
 const emojiImageByBrandPromise = require("emoji-cache");
@@ -156,7 +156,7 @@ async function createBlinkFrame(color, index, text, dirPath, hasilRandomFonts) {
     }
   }
   const imageBuffer = canvas.toBuffer('image/png');
-  await fs.promises.writeFile(framePath, imageBuffer);
+  await fs.writeFile(framePath, imageBuffer);
 };
 async function createGradientFrame(frameIndex, totalFrames, text, dirPath, fileName, hasilRandomFonts, hasilRandomColors) {
   const allEmojiImages = await emojiImageByBrandPromise;
@@ -233,7 +233,7 @@ async function createGradientFrame(frameIndex, totalFrames, text, dirPath, fileN
     }
   }
   const imageBuffer = canvas.toBuffer('image/png');
-  await fs.promises.writeFile(framePath, imageBuffer);
+  await fs.writeFile(framePath, imageBuffer);
 };
 async function createWalkFrame(frameIndex, text, dirPath, hasilRandomFonts, colors) {
   const allEmojiImages = await emojiImageByBrandPromise;
@@ -307,10 +307,10 @@ async function createWalkFrame(frameIndex, text, dirPath, hasilRandomFonts, colo
     }
   }
   const imageBuffer = canvas.toBuffer('image/png');
-  await fs.promises.writeFile(framePath, imageBuffer);
+  await fs.writeFile(framePath, imageBuffer);
 };
 async function attpBlinkGenerate(text, hasilRandomFonts) {
-  const tmpDir = await fs.promises.mkdtemp(path.join(global.tmpDir, 'attp-'));
+  const tmpDir = await fs.mkdtemp(path.join(global.tmpDir, 'attp-'));
   const framesDir = tmpDir;
   const gifPath = path.join(tmpDir, 'attp.gif');
   const webpPath = path.join(tmpDir, 'attp.webp');
@@ -346,14 +346,14 @@ async function attpBlinkGenerate(text, hasilRandomFonts) {
         })
         .on('error', reject);
     });
-    const mediaData = await fs.promises.readFile(webpPath);
+    const mediaData = await fs.readFile(webpPath);
     return mediaData;
   } finally {
     await fs.rm(tmpDir, { recursive: true, force: true }).catch(e => console.error(`Gagal membersihkan ${tmpDir}`, e));
   }
 };
 async function attpGradientGenerate(text, hasilRandomFonts, hasilRandomColors) {
-  const tmpDir = await fs.promises.mkdtemp(path.join(global.tmpDir, 'attp-gradient-'));
+  const tmpDir = await fs.mkdtemp(path.join(global.tmpDir, 'attp-gradient-'));
   const framesDir = tmpDir;
   const gifPath = path.join(tmpDir, 'attp.gif');
   const webpPath = path.join(tmpDir, 'attp.webp');
@@ -381,14 +381,14 @@ async function attpGradientGenerate(text, hasilRandomFonts, hasilRandomColors) {
         })
         .on('error', reject);
     });
-    const mediaData = await fs.promises.readFile(webpPath);
+    const mediaData = await fs.readFile(webpPath);
     return mediaData;
   } finally {
     await fs.rm(tmpDir, { recursive: true, force: true }).catch(e => console.error(`Gagal membersihkan ${tmpDir}`, e));
   }
 };
 async function attpWalkingGenerate(text, hasilRandomFonts) {
-  const tmpDir = await fs.promises.mkdtemp(path.join(global.tmpDir, 'attp-'));
+  const tmpDir = await fs.mkdtemp(path.join(global.tmpDir, 'attp-'));
   const framesDir = tmpDir;
   const gifPath = path.join(tmpDir, 'attp.gif');
   const webpPath = path.join(tmpDir, 'attp.webp');
@@ -426,7 +426,7 @@ async function attpWalkingGenerate(text, hasilRandomFonts) {
         })
         .on('error', reject);
     });
-    const mediaData = await fs.promises.readFile(webpPath);
+    const mediaData = await fs.readFile(webpPath);
     return mediaData;
   } finally {
     await fs.rm(tmpDir, { recursive: true, force: true }).catch(e => console.error(`Gagal membersihkan ${tmpDir}`, e));
