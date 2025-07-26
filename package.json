@@ -1,6 +1,6 @@
 {
   "name": "attp-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "sebuah generator untuk membuat text / animated text to png yang di convert ke gif / webp",
   "keywords": [
     "ttp",
