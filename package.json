@@ -1,0 +1,37 @@
+{
+  "name": "attp-generator",
+  "version": "1.0.1",
+  "description": "sebuah generator untuk membuat text / animated text to png yang di convert ke gif / webp",
+  "keywords": [
+    "ttp",
+    "attp",
+    "generator",
+    "image",
+    "canvas",
+    "sharp",
+    "imagemagick",
+    "gif2webp"
+  ],
+  "homepage": "https://github.com/Terror-Machine/attp-generator#readme",
+  "bugs": {
+    "url": "https://github.com/Terror-Machine/attp-generator/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terror-Machine/attp-generator.git"
+  },
+  "license": "MIT",
+  "author": "Terror-Machine",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "canvas": "^3.1.2",
+    "fs-extra": "^11.3.0",
+    "emoji-cache": "^1.0.0",
+    "emoji-db": "github:Terror-Machine/emoji-db#master"
+  },
+  "devDependencies": {}
+}
