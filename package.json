@@ -1,6 +1,6 @@
 {
   "name": "attp-generator",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "sebuah generator untuk membuat text / animated text to png yang di convert ke gif / webp",
   "keywords": [
     "ttp",
@@ -28,9 +28,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "canvas": "^3.1.2",
-    "emoji-cache": "^1.0.0",
+    "canvas": "^3.2.0",
+    "emoji-cache": "^2.0.0",
     "emoji-db": "github:Terror-Machine/emoji-db#master"
-  },
-  "devDependencies": {}
+  }
 }
