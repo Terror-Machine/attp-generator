@@ -8,7 +8,17 @@ const exec = util.promisify(require('child_process').exec);
 const { createCanvas, loadImage, registerFont } = require('canvas');
 registerFont(path.join(__dirname, './fonts/Bangers.ttf'), { family: 'Bangers' });
 registerFont(path.join(__dirname, './fonts/SpicyRice.otf'), { family: 'SpicyRice' });
-global.tmpDir = './sampah';
+global.tmpDir = path.resolve('./sampah');
+
+(async () => {
+  try {
+    await fs.mkdir(global.tmpDir, { recursive: true });
+  } catch (error) {
+    if (error.code !== 'EEXIST') {
+      console.error('Failed to create tmpDir:', error);
+    }
+  }
+})();
 
 let emojiDb;
 try {
